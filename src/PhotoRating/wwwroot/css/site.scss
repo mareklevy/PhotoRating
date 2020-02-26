@@ -1,0 +1,25 @@
+﻿.content {
+    display: flex;
+    flex-direction: column;
+
+    .panels {
+        display: flex;
+        flex-direction: row;
+
+        .panel-left {
+            flex: 1;
+        }
+
+        .panel-right {
+            margin: 10px;
+        }
+
+        .buttons {
+            width: 140px;
+
+            button {
+                /*margin: 5px 1px 5px 5px;*/
+            }
+        }
+    }
+}

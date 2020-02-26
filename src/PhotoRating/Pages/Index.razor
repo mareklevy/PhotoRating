@@ -1,0 +1,70 @@
+﻿@page "/"
+
+<div class="container-fluid">
+    <div class="content">
+        <div class="panels">
+            <div class="panel-left">
+                <Card>
+                    <CardHeader>
+                        <div class="row">
+                            <div class="col-6">Počet: @vm.Items.Count</div>
+                            <div class="col-6">Průměr: @vm.Average</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10"><h2><span class="badge badge-success">@vm.Total</span></h2></div>
+                            <div class="col-2 text-right">
+                                <Button Clicked="vm.ClearHandler" Style="@("font-size: 1.4em")">
+                                    <Icon Name="@("fa-sync")"></Icon>
+                                </Button>
+                            </div>
+                        </div>
+
+                    </CardHeader>
+                    <CardBody>
+                        @foreach (var item in vm.Items)
+                        {
+                            <div class="row" @key="item.Id">
+                                <h5 class="col-10">@item.Rating</h5>
+                                <div class="col-2 text-right"><Button Clicked="(() => vm.RemoveVoteHandler(item))">
+                                    <Icon Name="Blazorise.IconName.Delete"></Icon></Button>
+                                </div>
+                            </div>
+                        }
+                    </CardBody>
+                </Card>
+                
+            </div>
+            <div class="panel-right">
+                <div class="buttons">
+                    @{
+                        var idx = 0;
+                        foreach (var button in vm.Buttons)
+                        {
+                            decimal val = (button == 0) ? 10M : button;
+
+                            if (idx % 2 == 0)
+                            {
+                                <Button Color="Blazorise.Color.Primary"
+                                        Size="Blazorise.ButtonSize.Large"
+                                        Clicked="(() => vm.VoteHandler(val))">
+                                    @val
+                                </Button>
+                            }
+                            else
+                            {
+                                <Button Color="Blazorise.Color.Secondary"
+                                        Size="Blazorise.ButtonSize.Large"
+                                        Clicked="(() => vm.VoteHandler(val))">
+                                    @val
+                                </Button>
+                            }
+                            idx++;
+
+                        }
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
