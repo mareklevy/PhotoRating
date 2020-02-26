@@ -30,7 +30,7 @@ namespace PhotoRating.ViewModels
             
             if (this.items.Any())
             {
-                this.Average = Math.Round(this.items.Sum(x => x.Rating) / this.items.Count, 3);
+                this.Average = Math.Round(this.items.Sum(x => x.Rating) / this.items.Count, 2);
                 this.Total = Math.Round(this.Average, 0, MidpointRounding.AwayFromZero);
             }
             else
