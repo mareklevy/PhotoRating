@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Text;
-using Microsoft.AspNetCore.Blazor.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System.Threading.Tasks;
+
 using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
+
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PhotoRating
 {
@@ -25,6 +24,8 @@ namespace PhotoRating
                   .AddFontAwesomeIcons();
 
             builder.RootComponents.Add<App>("app");
+
+            builder.Services.AddBaseAddressHttpClient();
 
             var host = builder.Build();
 
